@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>AI画像生成サイト</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>画像生成サイト</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>AI画像生成サイト</h1>
-    <input id="prompt" type="text" placeholder="例：夕暮れの海" />
-    <button onclick="generate()">生成</button>
-    <div id="result-container">
-      <img id="result" alt="生成画像" />
+    <h1>画像生成サイト</h1>
+    <div class="container">
+      <textarea id="prompt" placeholder="生成したい画像を入力"></textarea>
+      <button id="generate-btn">生成</button>
+      <div id="result"></div>
     </div>
     <script src="script.js"></script>
   </body>
