@@ -5,7 +5,7 @@ import os
 app = Flask(__name__, static_folder="client")
 
 # Hugging Face APIキー
-HF_API_KEY = "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"
+HF_API_KEY = ""
 
 HF_API_URL = "https://api-inference.huggingface.co/models/CompVis/stable-diffusion-v1-4"
 
@@ -50,3 +50,4 @@ def generate():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
