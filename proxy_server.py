@@ -1,13 +1,21 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import requests
-import base64
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="client")
 
-# ここに Hugging Face APIキーを入れてください
-HF_API_KEY = "Yhf_IkWiBdgSqRkVOyPlhIaBEHPKFlhERqZXoCOUR_HUGGINGFACE_API_KEY"
+# Hugging Face APIキー
+HF_API_KEY = "YOUR_Hhf_IkWiBdgSqRkVOyPlhIaBEHPKFlhERqZXoCUGGINGFACE_API_KEY"
 
 HF_API_URL = "https://api-inference.huggingface.co/models/CompVis/stable-diffusion-v1-4"
+
+@app.route("/")
+def index():
+    return send_from_directory("client", "index.html")
+
+@app.route("/<path:path>")
+def send_static(path):
+    return send_from_directory("client", path)
 
 @app.route("/generate", methods=["POST"])
 def generate():
@@ -32,7 +40,6 @@ def generate():
 
     result = response.json()
 
-    # base64形式で返ってくる画像を取得
     if isinstance(result, list) and "generated_image" in result[0]:
         return jsonify({"image": result[0]["generated_image"]})
 
